@@ -37,18 +37,17 @@ productos.forEach((prod, index) => {
 document.addEventListener("click", e => {
   if (e.target.classList.contains("agregar")) {
     const id = Number(e.target.dataset.id);
-    const producto = productos.find(p => p.id === id);
-
+    const productoBase = productos[id - 1];
+    if (!productoBase) return;
     const item = carrito.find(p => p.id === id);
-    if (item) {
-      item.cantidad++;
-    } else {
-      carrito.push({ ...producto, cantidad: 1 });
+      if (item) {
+        item.cantidad++;
+      } else {
+        carrito.push({ ...productoBase, id: id, cantidad: 1 });
+      }
+      mostrarCarrito();
+      localStorage.setItem("carrito", JSON.stringify(carrito));
     }
-
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    alert(`🎵 ${producto.nombre} fue agregado al carrito`);
-  }
 });
 
 // LOGIN
@@ -71,3 +70,55 @@ form.addEventListener("submit", e => {
   modal.hide();
   alert(`Bienvenido/a, ${user}`);
 });
+
+
+const contenedor = document.getElementById("carritoLista");
+
+function mostrarCarrito() {
+  if (carrito.length === 0) {
+    contenedor.innerHTML = "<p class='text-center'>Tu carrito está vacío.</p>";
+    return;
+  }
+
+  let total = 0;
+  let html = `
+    <table class="table table-dark table-striped text-center align-middle">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Unidad</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  carrito.forEach(item => {
+    const subtotal = item.precio * item.cantidad;
+    total += subtotal;
+    html += `
+      <tr>
+        <td>${item.nombre}</td>
+        <td>${item.cantidad}</td>
+        <td>$${item.precio}</td>
+        <td>$${subtotal}</td>
+      </tr>
+    `;
+  });
+
+  html += `
+      </tbody>
+    </table>
+    <h4 class="text-end mt-3">$${total}</h4>
+  `;
+
+  contenedor.innerHTML = html;
+}
+
+document.getElementById("vaciar").addEventListener("click", () => {
+  localStorage.removeItem("carrito");
+  location.reload();
+});
+
+mostrarCarrito();
