@@ -50,6 +50,7 @@ document.addEventListener("click", e => {
     }
 });
 
+
 // LOGIN
 const form = document.getElementById("loginForm");
 const error = document.getElementById("loginError");
