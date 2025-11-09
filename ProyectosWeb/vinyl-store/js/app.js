@@ -2,16 +2,9 @@
 
 // Catálogo de vinilos
   const productos = [
-  { id: 1, nombre: "", precio: 16700, img: "img/" },
-  { id: 2, nombre: "", precio: 12500, img: "img/" },
-  { id: 3, nombre: "", precio: 18000, img: "img/" },
-  { id: 4, nombre: "", precio: 15800, img: "img/" },
-  { id: 5, nombre: "", precio: 19800, img: "img/" },
-  { id: 6, nombre: "", precio: 11400, img: "img/" },
-  { id: 7, nombre: "", precio: 16300, img: "img/" },
-  { id: 8, nombre: "", precio: 17000, img: "img/" },
-  { id: 9, nombre: "", precio: 13000, img: "img/" },
-  { id: 10, nombre: "", precio: 15000, img: "img/" },
+  { id: 1, nombre: "Brat", precio: 16700, img: "public/vinyl-brat.jpg" },
+  { id: 2, nombre: "The Life of a Showgirl", precio: 16700, img: "public/vinyl-showgirl.jpg" },
+  { id: 3, nombre: "Short & Sweet Deluxe", precio: 16700, img: "public/vinyl-shortsweetdeluxe.jpg" },
 ];
 
 
@@ -20,20 +13,21 @@ const lista = document.getElementById("listaProductos");
 
 // Recupero o creo carrito
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+const placeholderImg = "https://picsum.photos/1000/1000";
 
 // Pintar productos en cards
 productos.forEach(prod => {
   const col = document.createElement("div");
   col.classList.add("col-md-4");
   col.innerHTML = `
-    <div class="card h-100 bg-black text-light border border-warning">
-      <img src="${prod.img}" class="card-img-top producto-img" alt="${prod.nombre}">
+    <div class="card h-100 bg-black text-light">
+      <img src="${prod.img || placeholderImg}" class="card-img-top producto-img" alt="${prod.nombre}">
       <div class="card-body d-flex flex-column justify-content-between">
         <div>
-          <h5 class="card-title text-warning">${prod.nombre}</h5>
-          <p class="card-text">$${prod.precio}</p>
+          <h5 class="card-title">${prod.nombre}</h5>
+          <p class="card-precio card-text">$${prod.precio}</p>
         </div>
-        <button class="btn btn-warning fw-semibold mt-2 agregar" data-id="${prod.id}">Agregar al carrito</button>
+        <button class="btn btn-primary fw-semibold mt-2 agregar" data-id="${prod.id}">Agregar al carrito</button>
       </div>
     </div>
   `;

@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vinyl Store | E-commerce de vinilos</title>
+  <title>Vinimusic | E-commerce de vinilos</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body class="bg-dark text-light">
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-warning">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand fw-bold text-warning" href="index.html">Vinyl Store</a>
+      <a class="navbar-brand fw-bold text-primary" href="index.html">Vinimusic</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto text-center">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#productos">Vinilos</a></li>
-          <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+          <li class="nav-item"><a class="nav-link px-3 active" href="index.html">Productos</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#contacto">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="carrito.html">Carrito</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
         </ul>
       </div>
     </div>
@@ -62,7 +63,7 @@
 
   <!-- PRODUCTOS -->
   <section id="productos" class="container my-5">
-    <h2 class="text-center mb-4 text-warning">Vinilos destacados</h2>
+    <h2 class="text-center mb-4 fw-bold">Vinilos destacados</h2>
     <div id="listaProductos" class="row g-4">
       <!-- Se inyectan desde JS -->
     </div>
@@ -72,22 +73,22 @@
   <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content bg-black text-light">
-        <div class="modal-header border-warning">
-          <h5 class="modal-title text-warning">Iniciar sesión</h5>
+        <div class="modal-header border-primary">
+          <h5 class="modal-title text-primary">Iniciar sesión</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <form id="loginForm">
             <div class="mb-3">
               <label for="usuario" class="form-label">Usuario</label>
-              <input type="text" class="form-control bg-dark text-light border-warning" id="usuario">
+              <input type="text" class="form-control bg-dark text-light border-primary" id="usuario">
             </div>
             <div class="mb-3">
               <label for="clave" class="form-label">Contraseña</label>
-              <input type="password" class="form-control bg-dark text-light border-warning" id="clave">
+              <input type="password" class="form-control bg-dark text-light border-primary" id="clave">
             </div>
             <div id="loginError" class="text-danger mb-2"></div>
-            <button type="submit" class="btn btn-warning w-100 fw-bold">Ingresar</button>
+            <button type="submit" class="btn btn-primary w-100 fw-bold">Ingresar</button>
           </form>
         </div>
       </div>
