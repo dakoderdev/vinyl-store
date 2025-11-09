@@ -5,7 +5,7 @@ const contenedor = document.getElementById("carritoLista");
 
 function mostrarCarrito() {
   if (carrito.length === 0) {
-    contenedor.innerHTML = "<p class='text-center'>Tu carrito está vacío.</p
+    contenedor.innerHTML = "<p class='text-center'>Tu carrito está vacío.</p>";
     return;
   }
 
@@ -51,3 +51,4 @@ document.getElementById("vaciar").addEventListener("click", () => {
 });
 
 mostrarCarrito();
+
