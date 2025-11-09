@@ -5,6 +5,9 @@ const productos = [
   { nombre: "AM", precio: 20100, img: "vinyl-am.jpg" },
   { nombre: "Future Nostalgia", precio: 17350, img: "vinyl-futurenostalgia.jpg" },
   { nombre: "Norman F*cking Rockwell", precio: 16000, img: "vinyl-nfr.jpg" },
+  { nombre: "Come Over When You're Sober", precio: 16000, img: "vinyl-comesober.jpg" },
+  { nombre: "1989", precio: 17000, img: "vinyl-1989.jpg" },
+  { nombre: "Starboy", precio: 18250, img: "vinyl-starboy.jpg" },
 ];
 
 
