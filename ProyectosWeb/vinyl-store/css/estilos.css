@@ -1,0 +1,56 @@
+body {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-se
+}
+
+.img-carousel {
+  max-height: 420px;
+  object-fit: cover;
+  filter: brightness(0.5) sepia(20%) saturate(130%) hue-rotate(10deg);
+}
+.carousel-caption h5 {
+  color: #ffdd6f;
+  text-shadow: 0 0 10px #000;
+  font-weight: bold;
+}
+.carousel-caption p {
+  color: #f8f9fa;
+}
+
+
+.card .producto-img {
+  height: 260px;
+  object-fit: cover;
+}
+
+.card {
+  border-radius: 0.6rem;
+}
+
+.btn-warning {
+  background-color: #f5c542;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #ffdd6f;
+  color: #000;
+}
+
+table {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+.card-title {
+  color: #ffcc00;
+}
+.card-text {
+  color: #d9d9d9;
+}
