@@ -1,26 +1,13 @@
-const productos = [
-  { nombre: "Brat", precio: 16500, img: "vinyl-brat.jpg" },
-  { nombre: "The Life of a Showgirl", precio: 18000, img: "vinyl-showgirl.jpg" },
-  { nombre: "Short & Sweet Deluxe", precio: 20000, img: "vinyl-shortsweetdeluxe.jpg" },
-  { nombre: "AM", precio: 20100, img: "vinyl-am.jpg" },
-  { nombre: "Future Nostalgia", precio: 17350, img: "vinyl-futurenostalgia.jpg" },
-  { nombre: "Norman F*cking Rockwell", precio: 16000, img: "vinyl-nfr.jpg" },
-  { nombre: "Come Over When You're Sober", precio: 16000, img: "vinyl-comesober.jpg" },
-  { nombre: "1989", precio: 17000, img: "vinyl-1989.jpg" },
-  { nombre: "Starboy", precio: 18250, img: "vinyl-starboy.jpg" },
-];
-
-
 const lista = document.getElementById("listaProductos");
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-productos.forEach((prod, index) => {
+if (lista) { 
+  productos.forEach((prod, index) => {
   const id = index + 1;
   const col = document.createElement("div");
   col.classList.add("col-md-4");
   col.innerHTML = `
-    <div class="card h-100 bg-black text-light">
-      <img src="public/${prod.img}" class="card-img-top producto-img" alt="${prod.nombre}">
+    <div class="card h-100 bg-black text-light" data-id="${id}"> <img src="public/${prod.img}" class="card-img-top producto-img" alt="${prod.nombre}">
       <div class="card-body d-flex flex-column justify-content-between">
         <div>
           <h5 class="card-title">${prod.nombre}</h5>
@@ -31,29 +18,52 @@ productos.forEach((prod, index) => {
     </div>
   `;
   lista.appendChild(col);
-});
+  });
+}
 
-// Delegación de evento para botones "Agregar al carrito"
 document.addEventListener("click", e => {
-  if (e.target.classList.contains("agregar")) {
-    const id = Number(e.target.dataset.id);
-    const producto = productos.find(p => p.id === id);
+  const target = e.target;
 
+  const productCard = target.closest('.card');
+  
+  if (target.classList.contains("agregar")) {
+    e.stopPropagation();
+    
+    const id = Number(target.dataset.id);
+    const productoBase = productos[id - 1];
+    if (!productoBase) return;
+    
     const item = carrito.find(p => p.id === id);
     if (item) {
       item.cantidad++;
     } else {
-      carrito.push({ ...producto, cantidad: 1 });
+      carrito.push({ ...productoBase, id: id, cantidad: 1 });
     }
-
+    
+    mostrarCarrito();
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    alert(`🎵 ${producto.nombre} fue agregado al carrito`);
+  
+  } else if (productCard && !target.classList.contains('agregar')) {
+    const id = productCard.dataset.id;
+    if (id) {
+      window.location.href = `details.html?id=${id}`; 
+    }
   }
 });
 
+
+const USER_STORAGE_KEY = "loggedInUser";
 // LOGIN
 const form = document.getElementById("loginForm");
 const error = document.getElementById("loginError");
+const loginButton = document.getElementById("loginButton");
+
+function updateLoginButtonFromStorage() {
+    const storedUser = localStorage.getItem(USER_STORAGE_KEY);
+    if (storedUser && loginButton) {
+        loginButton.innerHTML = storedUser;
+    }
+}
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -64,10 +74,62 @@ form.addEventListener("submit", e => {
     error.textContent = "Debes ingresar usuario y contraseña.";
     return;
   }
-
+  localStorage.setItem(USER_STORAGE_KEY, user);
   error.textContent = "";
   const modalElement = document.getElementById("loginModal");
   const modal = bootstrap.Modal.getInstance(modalElement);
   modal.hide();
-  alert(`Bienvenido/a, ${user}`);
+  loginButton.innerHTML = user;
 });
+updateLoginButtonFromStorage();
+
+const contenedor = document.getElementById("carritoLista"); 
+
+function mostrarCarrito() {
+  if (carrito.length === 0) {
+    contenedor.innerHTML = "<p class='text-center'>Tu carrito está vacío.</p>";
+    return;
+  }
+
+  let total = 0;
+  let html = `
+    <table class="table table-dark table-striped text-center align-middle">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Unidad</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  carrito.forEach(item => {
+    const subtotal = item.precio * item.cantidad;
+    total += subtotal;
+    html += `
+      <tr>
+        <td>${item.nombre}</td>
+        <td>${item.cantidad}</td>
+        <td>$${item.precio}</td>
+        <td>$${subtotal}</td>
+      </tr>
+    `;
+  });
+
+  html += `
+      </tbody>
+    </table>
+    <h4 class="text-end mt-3">$${total}</h4>
+  `;
+
+  contenedor.innerHTML = html;
+}
+
+document.getElementById("vaciar").addEventListener("click", () => {
+  localStorage.removeItem("carrito");
+  location.reload();
+});
+
+mostrarCarrito();

@@ -22,7 +22,7 @@
           <li class="nav-item"><a class="nav-link px-3 active" href="index.html">Productos</a></li>
           <li class="nav-item"><a class="nav-link px-3" href="#contacto">Contacto</a></li>
           <li class="nav-item"><a class="nav-link px-3" href="carrito.html">Carrito</a></li>
-          <li class="nav-item"><a class="nav-link px-3" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+          <li class="nav-item"><a id="loginButton" class="nav-link px-3" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
         </ul>
       </div>
     </div>
@@ -31,27 +31,27 @@
   <!-- CAROUSEL -->
   <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
+      <a href="details.html?id=6" class="carousel-item active">
         <img src="public/vinyl-nfr.jpg" class="d-block w-100 img-carousel" alt="Vinilo destacado 1">
         <div class="carousel-caption d-none d-md-block">
           <h5>Norman F*cking Rockwell</h5>
           <p>Lana del Rey</p>
         </div>
-      </div>
-      <div class="carousel-item">
+      </a>
+      <a href="details.html?id=4" class="carousel-item">
         <img src="public/vinyl-am.jpg" class="d-block w-100 img-carousel" alt="Vinilo destacado 2">
         <div class="carousel-caption d-none d-md-block">
           <h5>AM</h5>
           <p>Arctic Monkeys</p>
         </div>
-      </div>
-      <div class="carousel-item">
+      </a>
+      <a href="details.html?id=5" class="carousel-item">
         <img src="public/vinyl-futurenostalgia.jpg" class="d-block w-100 img-carousel" alt="Vinilo destacado 3">
         <div class="carousel-caption d-none d-md-block">
           <h5>Future Nostalgia</h5>
           <p>Dua Lipa</p>
         </div>
-      </div>
+      </a>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
@@ -94,13 +94,30 @@
       </div>
     </div>
   </div>
-
+  <div class="bg-dark text-light offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasLabel">Carrito</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div id="offcanvas" class="offcanvas-body">
+      <div class="container my-5">
+        <div id="carritoLista" class="table-responsive"></div>
+        <div class="text-center mt-4">
+        <div class="d-grid gap-2 d-md-block">
+          <button id="vaciar" class="btn text-danger">Vaciar carrito</button>
+          <button class="btn btn-primary" type="button">Comprar</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
   <!-- FOOTER -->
   <footer class="bg-black text-center text-secondary py-3">
     <p class="mb-0">© 2025 Vinyl Store - Proyecto de Desarrollo Web</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

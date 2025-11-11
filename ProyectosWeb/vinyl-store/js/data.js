@@ -1,0 +1,11 @@
+const productos = [
+    { nombre: "Brat", precio: 125000, img: "vinyl-brat.jpg", artista: "Charli XCX", descripcion: "El sexto álbum de estudio de Charli XCX. Edición en vinilo blanco de 180g. Incluye 15 tracks." },
+    { nombre: "The Life of a Showgirl", precio: 139000, img: "vinyl-showgirl.jpg", artista: "Taylor Swift", descripcion: "El duodécimo álbum de estudio de Taylor Swift (2025). Edición limitada, doble vinilo de color naranja (Portofino Spritz Orange Shimmer)." },
+    { nombre: "Short n' Sweet Deluxe", precio: 128000, img: "vinyl-shortsweetdeluxe.jpg", artista: "Sabrina Carpenter", descripcion: "El sexto álbum de estudio de Sabrina Carpenter. Incluye los éxitos 'Espresso' y 'Please Please Please'. Vinilo de color azul." },
+    { nombre: "AM", precio: 89000, img: "vinyl-am.jpg", artista: "Arctic Monkeys", descripcion: "El aclamado quinto álbum. Incluye los sencillos 'Do I Wanna Know?' y 'R U Mine?'. Vinilo negro clásico." },
+    { nombre: "Future Nostalgia", precio: 85000, img: "vinyl-futurenostalgia.jpg", artista: "Dua Lipa", descripcion: "Disco de pop retro ganador del Grammy. Incluye 'Don't Start Now' y 'Levitating'. Vinilo rosa." },
+    { nombre: "Norman Fucking Rockwell!", precio: 122000, img: "vinyl-nfr.jpg", artista: "Lana del Rey", descripcion: "Obra maestra aclamada por la crítica y nominada al Grammy. Doble LP en color negro." },
+    { nombre: "Come Over When You're Sober, Pt. 1", precio: 110000, img: "vinyl-comesober.jpg", artista: "Lil Peep", descripcion: "El álbum debut del artista. Vinilo con efecto splatter que incluye los sencillos 'Awful Things' y 'Benz Truck'." },
+    { nombre: "1989", precio: 250000, img: "vinyl-1989.jpg", artista: "Taylor Swift", descripcion: "Edición estándar del quinto álbum de estudio (2014). Doble vinilo de color negro, el clásico que cambió el Pop. (Precio de colección)." },
+    { nombre: "Starboy", precio: 95000, img: "vinyl-starboy.jpg", artista: "The Weeknd", descripcion: "Doble vinilo de color rojo de 140g. Incluye los éxitos 'Starboy' y 'I Feel It Coming' con colaboraciones estelares." },
+];
