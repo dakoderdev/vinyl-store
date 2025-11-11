@@ -52,9 +52,18 @@ document.addEventListener("click", e => {
 });
 
 
+const USER_STORAGE_KEY = "loggedInUser";
 // LOGIN
 const form = document.getElementById("loginForm");
 const error = document.getElementById("loginError");
+const loginButton = document.getElementById("loginButton");
+
+function updateLoginButtonFromStorage() {
+    const storedUser = localStorage.getItem(USER_STORAGE_KEY);
+    if (storedUser && loginButton) {
+        loginButton.innerHTML = storedUser;
+    }
+}
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -65,14 +74,14 @@ form.addEventListener("submit", e => {
     error.textContent = "Debes ingresar usuario y contraseña.";
     return;
   }
-
+  localStorage.setItem(USER_STORAGE_KEY, user);
   error.textContent = "";
   const modalElement = document.getElementById("loginModal");
   const modal = bootstrap.Modal.getInstance(modalElement);
   modal.hide();
-  alert(`Bienvenido/a, ${user}`);
+  loginButton.innerHTML = user;
 });
-
+updateLoginButtonFromStorage();
 
 const contenedor = document.getElementById("carritoLista"); 
 
