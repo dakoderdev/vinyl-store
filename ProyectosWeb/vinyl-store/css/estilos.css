@@ -60,6 +60,7 @@ table {
 
 .card {
   border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
   border-radius: 1rem;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -88,4 +89,10 @@ table {
 
 .card-precio {
   font-size: 2rem;
+}
+
+.img-fluid { 
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }
